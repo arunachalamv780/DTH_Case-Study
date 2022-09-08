@@ -44,20 +44,20 @@ public class ProductDAO {
 	public int UpdateProduct(Connection con,int id,String sbtype,String sbfeature,int height,int width,int length,int price,int ins_charge,int up_charge,int discount,String billtype,int deposit) throws SQLException
 	{
 		int updated=0;
-		String sql ="update Product set id=?,sbtype=?,sbfeature=?,height=?,width=?,length=?,price=?,ins_charge=?,up_charge=?,discount=?,billtype=?,deposit=?";
+		String sql ="update Product set sbtype=?,sbfeature=?,height=?,width=?,length=?,price=?,ins_charge=?,up_charge=?,discount=?,billtype=?,deposit=? where id=?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, id);
-		ps.setString(2, sbtype);
-		ps.setString(3, sbfeature);
-		ps.setInt(4, height);
-		ps.setInt(5, width);
-		ps.setInt(6, length);
-		ps.setInt(7, price);
-		ps.setInt(8, ins_charge);
-		ps.setInt(9, up_charge);
-		ps.setInt(10, discount);
-		ps.setString(11, billtype);
-		ps.setInt(12,deposit);
+		ps.setString(1, sbtype);
+		ps.setString(2, sbfeature);
+		ps.setInt(3, height);
+		ps.setInt(4, width);
+		ps.setInt(5, length);
+		ps.setInt(6, price);
+		ps.setInt(7, ins_charge);
+		ps.setInt(8, up_charge);
+		ps.setInt(9, discount);
+		ps.setString(10, billtype);
+		ps.setInt(11,deposit);
+		ps.setInt(12, id);
 		updated = ps.executeUpdate();
 		return updated;
 	}
